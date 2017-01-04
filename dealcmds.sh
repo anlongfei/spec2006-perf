@@ -9,6 +9,8 @@ lenFP=`expr length $specFP`
 specINT=${spec}/benchspec/CPU2006/
 lenINT=`expr length $specINT`
 
+head=/home/alf/spec2006/CPU2006_Install/benchspec/CPU2006/
+tail=/run/run_base_ref_CPU_O3.0000
 INT="
 400.perlbench
 401.bzip2
@@ -51,9 +53,6 @@ funCpCmds(){
 	echo "specINT"  $specINT
 	fplist=`find ${specFP} -name run_base_ref_CPU_O3*`
 	intlist=`find ${specINT} -name run_base_ref_CPU_O3*`
-	echo "intlist"  $intlist
-	echo "fplist"  $fplist
-	echo $lenFP  $lenINT
 	cd $cur
 	if [ -d "casecmds" ];then
 		echo " ---> rm casecmds"
@@ -64,34 +63,26 @@ funCpCmds(){
 	cd $cur/casecmds
 
 	echo -e "\t\tint cmds\n" > int.cmds
-	for case in $intlist 
+	for case in $INT
 	do
-		curcase=${case:$lenbenchspec}
-		mkdir -p $curcase
-		cp $case/speccmds.cmd $curcase
-		tmp=${curcase#*/}
-		tmp=${tmp%/*}
-		tmp=${tmp%/*}
-		echo $tmp
-		echo -e "\n"$tmp >> int.cmds
-		sed -n '2,$p' $case/speccmds.cmd >> int.cmds
+		mkdir -p CPU2006/${case}${tail}
+		cp ${head}${case}${tail}/speccmds.cmd CPU2006/${case}${tail}
+		echo $case >> int.cmds
+		sed -n '2,$p' ${head}${case}${tail}/speccmds.cmd >> int.cmds
+		sed -i '3,$d' ${head}${case}${tail}/speccmds.cmd 
+		echo "" >> int.cmds
 	done
 
-#	echo -e "\t\tfp cmds\n" > fp.cmds
-#	for case in $fplist 
-#	do
-#		curcase=${case:$lenbenchspec}
-#		echo curcase $curcase
-#		mkdir -p $curcase
-#		cp $case/speccmds.cmd $curcase
-#		tmp=${curcase#*/}
-#		tmp=${tmp%/*}
-#		tmp=${tmp%/*}
-#		echo -e "\n"$tmp >> fp.cmds
-#		sed -n '2,$p' $case/speccmds.cmd >> fp.cmds
-#	done
-#
-
+	echo -e "\t\tfp cmds\n" > fp.cmds
+	for case in $FP
+	do
+		mkdir -p CPU2006/${case}${tail}
+		cp ${head}${case}${tail}/speccmds.cmd CPU2006/${case}${tail}
+		echo $case >> fp.cmds
+		sed -n '2,$p' ${head}${case}${tail}/speccmds.cmd >> fp.cmds
+		sed -i '3,$d' ${head}${case}${tail}/speccmds.cmd 
+		echo "" >> fp.cmds
+	done
 }
 
 funCpCmds
