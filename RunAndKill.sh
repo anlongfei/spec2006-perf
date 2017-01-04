@@ -49,7 +49,7 @@ for case in $INT
 do
 	case=${case%.*}
 	echo $case
-	runspec -c pmc-950-O3.cfg -n 1 --noreportable $case &
+	runspec -c pmc-950-O3.cfg -i test -n 1 --noreportable $case &
 	sleep 2
 	ps -ef | grep CPU_O3 | awk '{print $2}' | xargs kill -9
 done
@@ -66,7 +66,7 @@ for case in $FP
 do
 	case=${case%.*}
 	echo $case
-	runspec -c pmc-950-O3.cfg -n 1 --noreportable $case &
+	runspec -c pmc-950-O3.cfg -i test -n 1 --noreportable $case &
 	sleep 1
 	ps -ef | grep CPU_O3 | awk '{print $2}' | xargs kill -9
 done

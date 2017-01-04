@@ -10,7 +10,7 @@ specINT=${spec}/benchspec/CPU2006/
 lenINT=`expr length $specINT`
 
 head=/home/alf/spec2006/CPU2006_Install/benchspec/CPU2006/
-tail=/run/run_base_ref_CPU_O3.0000
+tail=/run/run_base_test_CPU_O3.0000
 INT="
 400.perlbench
 401.bzip2
@@ -51,8 +51,6 @@ FP="
 funCpCmds(){
 	echo "specFP"  $specFP
 	echo "specINT"  $specINT
-	fplist=`find ${specFP} -name run_base_ref_CPU_O3*`
-	intlist=`find ${specINT} -name run_base_ref_CPU_O3*`
 	cd $cur
 	if [ -d "casecmds" ];then
 		echo " ---> rm casecmds"

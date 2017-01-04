@@ -1,16 +1,19 @@
 #!/bin/bash
-specDir=/home/alf/spec2000/CPU2000_install
+specDir=/home/alf/spec2006/CPU2006_Install
 curDir=`pwd`
 
 # 1. first run spec2000
 cd $curDir
 echo " ------->>>>>>> run RunAndKill.sh ..."
-sleep 2
-#./RunAndKill.sh
+#sleep 2
+# 1. run and kill
+./RunAndKill.sh
 cd $specDir
 source shrc
 
-# 2.pmc_name umask event
+# 2. deal cmds
+./dealcmds.sh
+# .pmc_name umask event
 # name					   umask 	       event
 array_pmc=(
 "DTLB_LOAD_MISSES.ANY"                      "01"		"08"		## 0
@@ -20,7 +23,7 @@ array_pmc=(
 "UOPS_ISSUED.STALLED_CYCLES"                "01"		"0E"		## 4
 "LOAD_DISPATCH.RS"                          "01"		"13"		## 5
 "LOAD_DISPATCH.MOB"                         "04"		"13"		## 6
-"L2_RQSTS.MISS"                   	    "AA"		"24"		## 7
+"L2_RQSTS.MISS"								"AA"		"24"		## 7
 "L2_RQSTS.REFERENCES"                       "FF"		"24"		## 8
 "L2_RQSTS.RFOS"                             "0C"		"24"		## 9
 "L3_LAT_CACHE.REFERENCE"                    "4F"		"2E"		## 10
@@ -43,21 +46,59 @@ array_pmc=(
 "UNC_L3_LINES_OUT.ANY"                      "1F"		"0B"		## 27
 )
 
+INT="
+400.perlbench
+401.bzip2
+403.gcc
+429.mcf
+445.gobmk
+456.hmmer
+458.sjeng
+462.libquantum
+464.h264ref
+471.omnetpp
+473.astar
+483.xalancbmk
+999.specrand
+"
+
+FP="
+410.bwaves
+416.gamess
+433.milc
+434.zeusmp
+435.gromacs
+436.cactusADM
+437.leslie3d
+444.namd
+447.dealII
+450.soplex
+453.povray
+454.calculix
+459.GemsFDTD
+465.tonto
+470.lbm
+481.wrf
+482.sphinx3
+998.specrand
+"
+
+
 # 3. data dir
 cd $curDir
 
-if [ -d "CPU2000" ];then
-	rm CPU2000/* -rfv
+if [ -d "CPU2006" ];then
+	rm CPU2006/* -rfv
 fi
-mkdir CPU2000
 
+mkdir CPU2006
 
-cd CPU2000
+cd CPU2006
 dataDir=`pwd`
 
 # 4. run INT
 echo " ------->>>>>>> run INT ..."
-sleep 2
+#sleep 2
 i=0
 k=3
 	index=$(($i * 3))
@@ -178,37 +219,22 @@ k=3
 	umask28=${array_pmc[$(($index + 85))]}
 	event28=${array_pmc[$(($index + 86))]}
 
-
-
-
-
-specDir=${specDir}"/benchspec/CINT2000/"
+tail=/run/run_base_test_CPU_O3.0000
+head=/home/alf/spec2006/CPU2006_Install/benchspec/CPU2006/
+specDir=${specDir}"/benchspec/CPU2006/"
 while true
 do
 	index=$(($i * 3))
-	#index=`expr $i\*$k`
-	echo "index"  $index
-	echo "pmc_name" $pmc_name
-	echo "umask"  $umask
-	echo "event"  $event
 
-	#pwd
-	destDir=`find ${specDir} -name 00000002`
-	echo $specDir
-	len=`expr length ${specDir}`
-	echo $len
+
+#### int
 	echo "***********************int data***************************" >  ${dataDir}/int.$index
-	echo "" >>   ${dataDir}/int.$index 
-	
-	for dest in $destDir
+	echo "" >>   ${dataDir}/int.$index
+	for case in $INT
 	do
-		case=${dest:$len}
-		case=${case%/*}
-		case=${case%/*}
-		echo $case
-		
-		echo $dest
+		dest=${head}${case}${tail}
 		cd $dest
+		echo $dest
 		echo "====================================================================================="
 		echo "=====================================================================================" >>   ${dataDir}/int.$index
 		echo $dest >>   ${dataDir}/int.$index 
@@ -220,52 +246,17 @@ do
 		if [ $i -eq 14 ];then
 			perf stat -e r${umask14}${event14} -e r${umask15}${event15} -e r${umask16}${event16} -e r${umask17}${event17} -e r${umask18}${event18} -e r${umask19}${event19} -e r${umask20}${event20}  -e r${umask21}${event21}  -e r${umask22}${event22}  -e r${umask23}${event23}  -e r${umask24}${event24}  -e r${umask25}${event25}  -e r${umask26}${event26}  -e r${umask27}${event27} specinvoke  speccmds.cmd 2>>   ${dataDir}/int.$index
 		fi
+
 	done
-	
-	
-	i=$(($i + 14))
-	if [ $i -eq 28 ] ;then
-		echo "done !"
-		sleep 2
-		break	
-	fi
-done
 
-
-
-# 4. run FP
-echo " ------->>>>>>> run FP ..."
-sleep 2
-i=0
-k=3
-specDir=/home/alf/spec2000/CPU2000_install
-specDir=${specDir}"/benchspec/CFP2000/"
-while true
-do
-	index=$(($i * 3))
-	echo "index"  $index
-	echo "pmc_name" $pmc_name
-	echo "umask"  $umask
-	echo "event"  $event
-
-	#pwd
-#pwd
-	destDir=`find ${specDir} -name 00000002`
-	echo $specDir
-	len=`expr length ${specDir}`
-	echo $len
+#### fp
 	echo "***********************fp data***************************" >  ${dataDir}/fp.$index
-	echo "" >>   ${dataDir}/fp.$index 
-	
-	for dest in $destDir
+	echo "" >>   ${dataDir}/fp.$index
+	for case in $FP
 	do
-		case=${dest:$len}
-		case=${case%/*}
-		case=${case%/*}
-		echo $case
-		
-		echo $dest
+		dest=${head}${case}${tail}
 		cd $dest
+		echo $dest
 		echo "====================================================================================="
 		echo "=====================================================================================" >>   ${dataDir}/fp.$index
 		echo $dest >>   ${dataDir}/fp.$index 
@@ -277,12 +268,15 @@ do
 		if [ $i -eq 14 ];then
 			perf stat -e r${umask14}${event14} -e r${umask15}${event15} -e r${umask16}${event16} -e r${umask17}${event17} -e r${umask18}${event18} -e r${umask19}${event19} -e r${umask20}${event20}  -e r${umask21}${event21}  -e r${umask22}${event22}  -e r${umask23}${event23}  -e r${umask24}${event24}  -e r${umask25}${event25}  -e r${umask26}${event26}  -e r${umask27}${event27} specinvoke  speccmds.cmd 2>>   ${dataDir}/fp.$index
 		fi
+
 	done
+
+
+
 	i=$(($i + 14))
 	if [ $i -eq 28 ] ;then
 		echo "done !"
-		sleep 2
+		#sleep 2
 		break	
 	fi
 done
-
