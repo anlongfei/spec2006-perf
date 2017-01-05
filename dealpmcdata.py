@@ -1,34 +1,44 @@
 #!/usr/bin/python
 #-* coding:utf-8 -*-
-list_fp = [
-    "168.wupwise"
-    ,"171.swim"
-    ,"172.mgrid"
-    ,"173.applu"
-    ,"177.mesa"
-    ,"178.galgel"
-    ,"179.art"
-    ,"183.equake"
-    ,"187.facerec"
-    ,"188.ammp"
-    ,"189.lucas"
-    ,"191.fma3d"
-    ,"200.sixtrack"
-    ,"301.apsi" ]
+import os
 list_int = [
-    "164.gzip"
-    ,"175.vpr"
-    ,"176.gcc"
-    ,"181.mcf"
-    ,"186.crafty"
-    ,"197.parser"
-    ,"252.eon"
-    ,"254.gap"
-    ,"253.perlbmk"
-    ,"255.vortex"
-    ,"256.bzip2"
-    ,"300.twolf"
-    ]
+"400.perlbench"
+,"401.bzip2"
+,"403.gcc"
+,"429.mcf"
+,"445.gobmk"
+,"456.hmmer"
+,"458.sjeng"
+,"462.libquantum"
+,"464.h264ref"
+,"471.omnetpp"
+,"473.astar"
+,"483.xalancbmk"
+,"999.specrand"
+]
+
+list_fp = [
+"410.bwaves"
+,"416.gamess"
+,"433.milc"
+,"434.zeusmp"
+,"435.gromacs"
+,"436.cactusADM"
+,"437.leslie3d"
+,"444.namd"
+,"447.dealII"
+,"450.soplex"
+,"453.povray"
+,"454.calculix"
+,"459.GemsFDTD"
+,"465.tonto"
+,"470.lbm"
+,"481.wrf"
+,"482.sphinx3"
+,"998.specrand"
+]
+
+
 
 dict_pmc =  {
 "r0108" : "DTLB_LOAD_MISSES.ANY"                              ## 0
@@ -119,7 +129,7 @@ def merge():
         #for line in fint.readlines():
             words = line.split()
             len_words = len(words)
-            if len_words == 3 or (len_words == 1 and words[0].find("===") == -1  and words[0].find("000002") == -1):
+            if len_words == 3 or (len_words == 1 and words[0].find("===") == -1  and words[0].find("CPU_O3") == -1):
                 #if words[0].find("===") == -1  and words[0].find("000002") == -1:
                 #print words
                 tmp.append(words)
@@ -184,11 +194,13 @@ def init():
     global ffp2
     global output
     print "init"
-    fint1 ="./980/CPU2000/int.0"
-    fint2 ="./980/CPU2000/int.42"
-    ffp1  ="./980/CPU2000/fp.0"
-    ffp2  ="./980/CPU2000/fp.42"
-    output="./output"
+    fint1 ="./950/CPU2006/int.0"
+    fint2 ="./950/CPU2006/int.42"
+    ffp1  ="./950/CPU2006/fp.0"
+    ffp2  ="./950/CPU2006/fp.42"
+    os.system('rm -rfv ./950/output')
+    os.mkdir("./950/output")
+    output="./950/output"
 
     print "**** int ****"
     #for i in range(len(list_int)):

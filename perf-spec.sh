@@ -1,5 +1,5 @@
 #!/bin/bash
-specDir=/home/alf/spec2006/CPU2006_Install
+specDir=/home/cpu/spec2006/CPU2006_Install
 curDir=`pwd`
 
 # 1. first run spec2000
@@ -8,11 +8,13 @@ echo " ------->>>>>>> run RunAndKill.sh ..."
 #sleep 2
 # 1. run and kill
 ./RunAndKill.sh
-cd $specDir
-source shrc
 
 # 2. deal cmds
 ./dealcmds.sh
+
+cd $specDir
+source shrc
+
 # .pmc_name umask event
 # name					   umask 	       event
 array_pmc=(
@@ -220,7 +222,7 @@ k=3
 	event28=${array_pmc[$(($index + 86))]}
 
 tail=/run/run_base_test_CPU_O3.0000
-head=/home/alf/spec2006/CPU2006_Install/benchspec/CPU2006/
+head=/home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/
 specDir=${specDir}"/benchspec/CPU2006/"
 while true
 do

@@ -1,5 +1,5 @@
 #/bin/bash
-spec=/home/alf/spec2006/CPU2006_Install
+spec=/home/cpu/spec2006/CPU2006_Install
 specbenchspec=${spec}/benchspec/
 lenbenchspec=`expr length $specbenchspec`
 cur=`pwd`
@@ -9,7 +9,7 @@ lenFP=`expr length $specFP`
 specINT=${spec}/benchspec/CPU2006/
 lenINT=`expr length $specINT`
 
-head=/home/alf/spec2006/CPU2006_Install/benchspec/CPU2006/
+head=/home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/
 tail=/run/run_base_test_CPU_O3.0000
 INT="
 400.perlbench
