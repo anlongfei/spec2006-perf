@@ -231,7 +231,7 @@ do
 
 
 #### int
-	echo "***********************int data***************************" >  ${dataDir}/int.$index
+	echo "*********************** int data ***************************" >  ${dataDir}/int.$index
 	echo "" >>   ${dataDir}/int.$index
 	for case in $INT
 	do
@@ -253,7 +253,7 @@ do
 	done
 
 #### fp
-	echo "***********************fp data***************************" >  ${dataDir}/fp.$index
+	echo "*********************** fp data ***************************" >  ${dataDir}/fp.$index
 	echo "" >>   ${dataDir}/fp.$index
 	for case in $FP
 	do
@@ -283,3 +283,15 @@ do
 		break	
 	fi
 done
+
+cd $curDir
+if [ -d "950"];then
+	rm -rfv 950
+fi
+
+
+mkdir 950
+cp CPU2006 950 -rfv
+./dealpmcdata.py
+
+

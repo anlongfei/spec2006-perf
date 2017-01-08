@@ -100,7 +100,7 @@ list_pmc = [
 ,"r04A2"
 ,"r0FF2"
 ,"r1F0B"
-        ]
+]
 global int
 global fint1
 global fint2
@@ -110,112 +110,120 @@ global ffp2
 global output
 
 def merge():
-    global int
-    global fint1
-    global fint2
-    global fp
-    global ffp1
-    global ffp2
-    global output
-    print "** merge **"
-    dict_int = {}
-    dict_fp = {}
-    tmp = []
+	global int
+	global fint1
+	global fint2
+	global fp
+	global ffp1
+	global ffp2
+	global output
+	print "** merge **"
+	dict_int = {}
+	dict_fp = {}
+	tmp = []
 
-    for f in [fint1, fint2, ffp1, ffp2]:
-        fint = open(f)
-        lines = fint.readlines()
-        for line in lines:
-        #for line in fint.readlines():
-            words = line.split()
-            len_words = len(words)
-            if len_words == 3 or (len_words == 1 and words[0].find("===") == -1  and words[0].find("CPU_O3") == -1):
-                #if words[0].find("===") == -1  and words[0].find("000002") == -1:
-                #print words
-                tmp.append(words)
-        fint.close()
+	for f in [fint1, fint2, ffp1, ffp2]:
+		fint = open(f)
+		lines = fint.readlines()
+		for line in lines:
+			#for line in fint.readlines():
+			words = line.split()
+			len_words = len(words)
+			if len_words == 3 or len_words == 2 or (len_words == 1 and words[0].find("===") == -1  and words[0].find("CPU_O3") == -1):
+				#if words[0].find("===") == -1  and words[0].find("000002") == -1:
+				#print words
+				tmp.append(words)
+		fint.close()
 
 
-    print "========================================"
-    index = 0
-    for case in list_int:
-        dict_int[case] = []
-    for case in list_fp:
-        dict_fp[case] = []
+	print "========================================"
+	index = 0
+	for case in list_int:
+		dict_int[case] = []
+	for case in list_fp:
+		dict_fp[case] = []
 
-    while index < len(tmp):
-        if tmp[index][0] in list_int:
-            i=1
-            while i <= 14:
-                dict_int[tmp[index][0]].append(tmp[index+i])
-                i = i + 1
+	while index < len(tmp):
+		if tmp[index][0] in list_int:
+			i=1
+			while i <= 14:
+				dict_int[tmp[index][0]].append(tmp[index+i])
+				i = i + 1
 
-        if tmp[index][0] in list_fp:
-            i=1
-            while i <= 14:
-                dict_fp[tmp[index][0]].append(tmp[index+i])
-                i = i + 1
+		if tmp[index][0] in list_fp:
+			i=1
+			while i <= 14:
+				dict_fp[tmp[index][0]].append(tmp[index+i])
+				i = i + 1
+		index = index + 15
 
-        index = index + 15
+	outintfile=output+"/intfile.xls"
+	outfpfile=output+"/fpfile.xls"
+	#print outintfile
+	#print outfpfile
 
-    outintfile=output+"/intfile.xls"
-    outfpfile=output+"/fpfile.xls"
-    print outintfile
-    print outfpfile
+	print "=================dict_int================"
+	for case in list_int:
+		print case
+		print dict_int[case]
+	print "=================dict_fp================"
+	for case in dict_fp:
+		print dict_fp[case]
 
-    f=open(outfpfile,"wb")
-    for k in list_fp:
-        print k
-        f.write(k+"\n")
-        for case in dict_fp[k]:
-            f.write(dict_pmc[case[1]]+"\t"+case[1]+"\t"+case[0]+"\n")
-            print case
-    f.close()
-    print "************************************************"
 
-    f=open(outintfile,"wb")
-    for k in list_int:
-        print k
-        f.write(k+"\n")
-        for case in dict_int[k]:
-            f.write(dict_pmc[case[1]]+"\t"+case[1]+"\t"+case[0]+"\n")
-            print case
-    f.close()
+	f=open(outfpfile,"wb")
+	for k in list_fp:
+		#print k
+		f.write(k+"\n")
+		for case in dict_fp[k]:
+			f.write(dict_pmc[case[1]]+"\t"+case[1]+"\t"+case[0]+"\n")
+			#print case
+	f.close()
+	print "************************************************"
+
+	f=open(outintfile,"wb")
+	for k in list_int:
+		#print k
+		f.write(k+"\n")
+		for case in dict_int[k]:
+			f.write(dict_pmc[case[1]]+"\t"+case[1]+"\t"+case[0]+"\n")
+			#print case
+	f.close()
 
 
 def main():
-    init()
-    merge()
+	init()
+	merge()
 
 def init():
-    global fint1
-    global fint2
-    global ffp1
-    global ffp2
-    global output
-    print "init"
-    fint1 ="./950/CPU2006/int.0"
-    fint2 ="./950/CPU2006/int.42"
-    ffp1  ="./950/CPU2006/fp.0"
-    ffp2  ="./950/CPU2006/fp.42"
-    os.system('rm -rfv ./950/output')
-    os.mkdir("./950/output")
-    output="./950/output"
+	global fint1
+	global fint2
+	global ffp1
+	global ffp2
+	global output
+	print "init"
+	fint1 ="./950/CPU2006/int.0"
+	fint2 ="./950/CPU2006/int.42"
+	ffp1  ="./950/CPU2006/fp.0"
+	ffp2  ="./950/CPU2006/fp.42"
+	os.system('rm -rfv ./950/output')
+	os.mkdir("./950/output")
+	output="./950/output"
 
-    print "**** int ****"
-    #for i in range(len(list_int)):
-    #    print list_int[i]
+	print "**** int ****"
+	#for i in range(len(list_int)):
+	#    print list_int[i]
 
-    #i = 0
-    #print "**** fp ****"
-    #for i in range(len(list_fp)):
-    #    print list_fp[i]
+	#i = 0
+	#print "**** fp ****"
+	#for i in range(len(list_fp)):
+	#    print list_fp[i]
 
-    #i = 0
-    #print "======= pmc dict ========="
-    #for i in range(len(list_pmc)):
-    #    print list_pmc[i]
-    #    print dict_pmc[list_pmc[i]]
+	#i = 0
+	#print "======= pmc dict ========="
+	#for i in range(len(list_pmc)):
+	#    print list_pmc[i]
+	#    print dict_pmc[list_pmc[i]]
 
 if __name__ == "__main__":
-    main()
+	main()
