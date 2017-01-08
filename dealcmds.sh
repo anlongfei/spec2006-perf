@@ -1,5 +1,6 @@
 #/bin/bash
-spec=/home/cpu/spec2006/CPU2006_Install
+user=cpu
+spec=/home/${user}/spec2006/CPU2006_Install
 specbenchspec=${spec}/benchspec/
 lenbenchspec=`expr length $specbenchspec`
 cur=`pwd`
@@ -9,7 +10,7 @@ lenFP=`expr length $specFP`
 specINT=${spec}/benchspec/CPU2006/
 lenINT=`expr length $specINT`
 
-head=/home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/
+head=/home/${user}/spec2006/CPU2006_Install/benchspec/CPU2006/
 tail=/run/run_base_test_CPU_O3.0000
 INT="
 400.perlbench
@@ -66,8 +67,8 @@ funCpCmds(){
 		mkdir -p CPU2006/${case}${tail}
 		cp ${head}${case}${tail}/speccmds.cmd CPU2006/${case}${tail}
 		echo $case >> int.cmds
-		sed -n '2,$p' ${head}${case}${tail}/speccmds.cmd >> int.cmds
 		sed -i '3,$d' ${head}${case}${tail}/speccmds.cmd 
+		sed -n '2,$p' ${head}${case}${tail}/speccmds.cmd >> int.cmds
 		echo "" >> int.cmds
 	done
 
@@ -77,8 +78,8 @@ funCpCmds(){
 		mkdir -p CPU2006/${case}${tail}
 		cp ${head}${case}${tail}/speccmds.cmd CPU2006/${case}${tail}
 		echo $case >> fp.cmds
-		sed -n '2,$p' ${head}${case}${tail}/speccmds.cmd >> fp.cmds
 		sed -i '3,$d' ${head}${case}${tail}/speccmds.cmd 
+		sed -n '2,$p' ${head}${case}${tail}/speccmds.cmd >> fp.cmds
 		echo "" >> fp.cmds
 	done
 }

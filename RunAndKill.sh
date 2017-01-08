@@ -1,6 +1,8 @@
 #/bin/bash
-specconfig=/home/cpu/spec2006/CPU2006_Install/config
-specbench=/home/cpu/spec2006/CPU2006_Install/benchspec
+user=alf
+platform=950
+specconfig=/home/${user}/spec2006/CPU2006_Install/config
+specbench=/home/${user}/spec2006/CPU2006_Install/benchspec
 INT="
 400.perlbench
 401.bzip2
@@ -42,14 +44,14 @@ source ../shrc
 find ${specbench} -name exe -exec rm -rfv {} \;
 find ${specbench} -name run -exec rm -rfv {} \;
 
-runspec -c pmc-950-O3.cfg --action setup all
+runspec -c pmc-${platform}-O3.cfg -i test --action setup all
 
 echo $INT
 for case in $INT
 do
 	case=${case%.*}
 	echo $case
-	runspec -c pmc-950-O3.cfg -n 1 --noreportable $case &
+	runspec -c pmc-${platform}-O3.cfg -n 1 -i test --noreportable $case &
 	sleep 2
 	ps -ef | grep CPU_O3 | awk '{print $2}' | xargs kill -9
 done
@@ -66,7 +68,7 @@ for case in $FP
 do
 	case=${case%.*}
 	echo $case
-	runspec -c pmc-950-O3.cfg -n 1 --noreportable $case &
+	runspec -c pmc-${platform}-O3.cfg -i test -n 1 --noreportable $case &
 	sleep 1
 	ps -ef | grep CPU_O3 | awk '{print $2}' | xargs kill -9
 done

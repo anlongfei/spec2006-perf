@@ -1,5 +1,6 @@
 #!/bin/bash
-specDir=/home/cpu/spec2006/CPU2006_Install
+user=cpu
+specDir=/home/${user}/spec2006/CPU2006_Install
 curDir=`pwd`
 
 # 1. first run spec2000
@@ -222,7 +223,7 @@ k=3
 	event28=${array_pmc[$(($index + 86))]}
 
 tail=/run/run_base_test_CPU_O3.0000
-head=/home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/
+head=/home/${user}/spec2006/CPU2006_Install/benchspec/CPU2006/
 specDir=${specDir}"/benchspec/CPU2006/"
 while true
 do
