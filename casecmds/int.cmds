@@ -1,0 +1,41 @@
+		int cmds
+
+400.perlbench
+-o checkspam.2500.5.25.11.150.1.1.1.1.out -e checkspam.2500.5.25.11.150.1.1.1.1.err ../run_base_ref_CPU_O3.0000/perlbench_base.CPU_O3 -I./lib checkspam.pl 2500 5 25 11 150 1 1 1 1
+
+401.bzip2
+-o input.source.out -e input.source.err ../run_base_ref_CPU_O3.0000/bzip2_base.CPU_O3 input.source 280
+
+403.gcc
+-o 166.out -e 166.err ../run_base_ref_CPU_O3.0000/gcc_base.CPU_O3 166.i -o 166.s
+
+429.mcf
+-o inp.out -e inp.err ../run_base_ref_CPU_O3.0000/mcf_base.CPU_O3 inp.in
+
+445.gobmk
+-i 13x13.tst -o 13x13.out -e 13x13.err ../run_base_ref_CPU_O3.0000/gobmk_base.CPU_O3 --quiet --mode gtp
+
+456.hmmer
+-o nph3.out -e nph3.err ../run_base_ref_CPU_O3.0000/hmmer_base.CPU_O3 nph3.hmm swiss41
+
+458.sjeng
+-o ref.out -e ref.err ../run_base_ref_CPU_O3.0000/sjeng_base.CPU_O3 ref.txt
+
+462.libquantum
+-o ref.out -e ref.err ../run_base_ref_CPU_O3.0000/libquantum_base.CPU_O3 1397 8
+
+464.h264ref
+-o foreman_ref_baseline_encodelog.out -e foreman_ref_baseline_encodelog.err ../run_base_ref_CPU_O3.0000/h264ref_base.CPU_O3 -d foreman_ref_encoder_baseline.cfg
+
+471.omnetpp
+-o omnetpp.log -e omnetpp.err ../run_base_ref_CPU_O3.0000/omnetpp_base.CPU_O3 omnetpp.ini
+
+473.astar
+-o BigLakes2048.out -e BigLakes2048.err ../run_base_ref_CPU_O3.0000/astar_base.CPU_O3 BigLakes2048.cfg
+
+483.xalancbmk
+-o ref.out -e ref.err ../run_base_ref_CPU_O3.0000/Xalan_base.CPU_O3 -v t5.xml xalanc.xsl
+
+999.specrand
+-o rand.234923.out -e rand.234923.err ../run_base_ref_CPU_O3.0000/specrand_base.CPU_O3 1255432124 234923
+

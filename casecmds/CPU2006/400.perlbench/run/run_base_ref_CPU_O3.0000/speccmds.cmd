@@ -1,0 +1,2 @@
+-C /home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/400.perlbench/run/run_base_ref_CPU_O3.0000
+-o checkspam.2500.5.25.11.150.1.1.1.1.out -e checkspam.2500.5.25.11.150.1.1.1.1.err ../run_base_ref_CPU_O3.0000/perlbench_base.CPU_O3 -I./lib checkspam.pl 2500 5 25 11 150 1 1 1 1

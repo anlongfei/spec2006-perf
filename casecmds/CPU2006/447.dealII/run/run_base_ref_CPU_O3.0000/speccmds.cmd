@@ -1,0 +1,2 @@
+-C /home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/447.dealII/run/run_base_ref_CPU_O3.0000
+-o log -e dealII.err ../run_base_ref_CPU_O3.0000/dealII_base.CPU_O3 23

@@ -1,0 +1,2 @@
+-C /home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/445.gobmk/run/run_base_ref_CPU_O3.0000
+-i 13x13.tst -o 13x13.out -e 13x13.err ../run_base_ref_CPU_O3.0000/gobmk_base.CPU_O3 --quiet --mode gtp

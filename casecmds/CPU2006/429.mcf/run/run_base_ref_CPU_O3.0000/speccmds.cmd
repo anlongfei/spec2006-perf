@@ -1,0 +1,2 @@
+-C /home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/429.mcf/run/run_base_ref_CPU_O3.0000
+-o inp.out -e inp.err ../run_base_ref_CPU_O3.0000/mcf_base.CPU_O3 inp.in

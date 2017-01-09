@@ -1,0 +1,2 @@
+-C /home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/403.gcc/run/run_base_ref_CPU_O3.0000
+-o 166.out -e 166.err ../run_base_ref_CPU_O3.0000/gcc_base.CPU_O3 166.i -o 166.s

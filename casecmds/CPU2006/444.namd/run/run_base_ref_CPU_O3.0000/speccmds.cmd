@@ -1,0 +1,2 @@
+-C /home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/444.namd/run/run_base_ref_CPU_O3.0000
+-o namd.stdout -e namd.err ../run_base_ref_CPU_O3.0000/namd_base.CPU_O3 --input namd.input --iterations 38 --output namd.out 

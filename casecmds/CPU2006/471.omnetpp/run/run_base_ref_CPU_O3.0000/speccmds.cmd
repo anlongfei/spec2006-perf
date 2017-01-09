@@ -1,0 +1,2 @@
+-C /home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/471.omnetpp/run/run_base_ref_CPU_O3.0000
+-o omnetpp.log -e omnetpp.err ../run_base_ref_CPU_O3.0000/omnetpp_base.CPU_O3 omnetpp.ini

@@ -1,0 +1,2 @@
+-C /home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/435.gromacs/run/run_base_ref_CPU_O3.0000
+-e gromacs.err ../run_base_ref_CPU_O3.0000/gromacs_base.CPU_O3 -silent -deffnm gromacs -nice 0

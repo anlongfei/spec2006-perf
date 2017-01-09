@@ -1,0 +1,56 @@
+		fp cmds
+
+410.bwaves
+-e bwaves.err ../run_base_ref_CPU_O3.0000/bwaves_base.CPU_O3
+
+416.gamess
+-i cytosine.2.config -o cytosine.2.out -e cytosine.2.err ../run_base_ref_CPU_O3.0000/gamess_base.CPU_O3
+
+433.milc
+-i su3imp.in -o su3imp.out -e su3imp.err ../run_base_ref_CPU_O3.0000/milc_base.CPU_O3
+
+434.zeusmp
+-o zeusmp.stdout -e zeusmp.err ../run_base_ref_CPU_O3.0000/zeusmp_base.CPU_O3
+
+435.gromacs
+-e gromacs.err ../run_base_ref_CPU_O3.0000/gromacs_base.CPU_O3 -silent -deffnm gromacs -nice 0
+
+436.cactusADM
+-o benchADM.out -e benchADM.err ../run_base_ref_CPU_O3.0000/cactusADM_base.CPU_O3 benchADM.par
+
+437.leslie3d
+-i leslie3d.in -o leslie3d.stdout -e leslie3d.err ../run_base_ref_CPU_O3.0000/leslie3d_base.CPU_O3
+
+444.namd
+-o namd.stdout -e namd.err ../run_base_ref_CPU_O3.0000/namd_base.CPU_O3 --input namd.input --iterations 38 --output namd.out 
+
+447.dealII
+-o log -e dealII.err ../run_base_ref_CPU_O3.0000/dealII_base.CPU_O3 23
+
+450.soplex
+-o pds-50.mps.out -e pds-50.mps.stderr ../run_base_ref_CPU_O3.0000/soplex_base.CPU_O3 -s1 -e -m45000 pds-50.mps
+
+453.povray
+-o SPEC-benchmark-ref.stdout -e SPEC-benchmark-ref.stderr ../run_base_ref_CPU_O3.0000/povray_base.CPU_O3 SPEC-benchmark-ref.ini
+
+454.calculix
+-o hyperviscoplastic.log -e hyperviscoplastic.err ../run_base_ref_CPU_O3.0000/calculix_base.CPU_O3 -i  hyperviscoplastic
+
+459.GemsFDTD
+-o ref.log -e ref.err ../run_base_ref_CPU_O3.0000/GemsFDTD_base.CPU_O3
+
+465.tonto
+-o tonto.out -e tonto.err ../run_base_ref_CPU_O3.0000/tonto_base.CPU_O3
+
+470.lbm
+-o lbm.out -e lbm.err ../run_base_ref_CPU_O3.0000/lbm_base.CPU_O3 3000 reference.dat 0 0 100_100_130_ldc.of
+
+481.wrf
+-o rsl.out.0000 -e wrf.err ../run_base_ref_CPU_O3.0000/wrf_base.CPU_O3
+
+482.sphinx3
+-o an4.log -e an4.err ../run_base_ref_CPU_O3.0000/sphinx_livepretend_base.CPU_O3 ctlfile . args.an4
+
+998.specrand
+-o rand.234923.out -e rand.234923.err ../run_base_ref_CPU_O3.0000/specrand_base.CPU_O3 1255432124 234923
+

@@ -1,0 +1,2 @@
+-C /home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/481.wrf/run/run_base_ref_CPU_O3.0000
+-o rsl.out.0000 -e wrf.err ../run_base_ref_CPU_O3.0000/wrf_base.CPU_O3
