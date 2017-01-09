@@ -1,5 +1,9 @@
 #!/bin/bash
 user=cpu
+tune=ref
+
+
+
 specDir=/home/${user}/spec2006/CPU2006_Install
 curDir=`pwd`
 
@@ -8,7 +12,7 @@ cd $curDir
 echo " ------->>>>>>> run RunAndKill.sh ..."
 #sleep 2
 # 1. run and kill
-./RunAndKill.sh
+#./RunAndKill.sh
 
 # 2. deal cmds
 ./dealcmds.sh
@@ -222,7 +226,7 @@ k=3
 	umask28=${array_pmc[$(($index + 85))]}
 	event28=${array_pmc[$(($index + 86))]}
 
-tail=/run/run_base_test_CPU_O3.0000
+tail=/run/run_base_${tune}_CPU_O3.0000
 head=/home/${user}/spec2006/CPU2006_Install/benchspec/CPU2006/
 specDir=${specDir}"/benchspec/CPU2006/"
 while true

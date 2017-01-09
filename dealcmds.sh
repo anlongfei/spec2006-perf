@@ -1,5 +1,7 @@
 #/bin/bash
 user=cpu
+tune=ref
+
 spec=/home/${user}/spec2006/CPU2006_Install
 specbenchspec=${spec}/benchspec/
 lenbenchspec=`expr length $specbenchspec`
@@ -11,7 +13,7 @@ specINT=${spec}/benchspec/CPU2006/
 lenINT=`expr length $specINT`
 
 head=/home/${user}/spec2006/CPU2006_Install/benchspec/CPU2006/
-tail=/run/run_base_test_CPU_O3.0000
+tail=/run/run_base_${tune}_CPU_O3.0000
 INT="
 400.perlbench
 401.bzip2
