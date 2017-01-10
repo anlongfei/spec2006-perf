@@ -1,2 +1,3 @@
 -C /home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/456.hmmer/run/run_base_ref_CPU_O3.0000
 -o nph3.out -e nph3.err ../run_base_ref_CPU_O3.0000/hmmer_base.CPU_O3 nph3.hmm swiss41
+-o retro.out -e retro.err ../run_base_ref_CPU_O3.0000/hmmer_base.CPU_O3 --fixed 0 --mean 500 --num 500000 --sd 350 --seed 0 retro.hmm

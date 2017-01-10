@@ -1,2 +1,4 @@
 -C /home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/416.gamess/run/run_base_ref_CPU_O3.0000
 -i cytosine.2.config -o cytosine.2.out -e cytosine.2.err ../run_base_ref_CPU_O3.0000/gamess_base.CPU_O3
+-i h2ocu2+.gradient.config -o h2ocu2+.gradient.out -e h2ocu2+.gradient.err ../run_base_ref_CPU_O3.0000/gamess_base.CPU_O3
+-i triazolium.config -o triazolium.out -e triazolium.err ../run_base_ref_CPU_O3.0000/gamess_base.CPU_O3

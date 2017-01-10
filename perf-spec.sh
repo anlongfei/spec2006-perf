@@ -1,7 +1,7 @@
 #!/bin/bash
 user=cpu
 tune=ref
-platform=950
+platform=980
 
 
 
@@ -13,9 +13,10 @@ cd $curDir
 echo " ------->>>>>>> run RunAndKill.sh ..."
 #sleep 2
 # 1. run and kill
-#./RunAndKill.sh
+./RunAndKill.sh
 
 # 2. deal cmds
+cd $curDir
 ./dealcmds.sh
 
 cd $specDir

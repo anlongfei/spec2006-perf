@@ -1,7 +1,8 @@
 #/bin/bash
 user=cpu
-platform=950
-tune=-i test
+platform=980
+tune=
+#tune="-i test"
 
 
 
@@ -77,9 +78,10 @@ do
 	ps -ef | grep CPU_O3 | awk '{print $2}' | xargs kill -9
 done
 	
-sleep 2
+sleep 4
 for i in 1 2 3 4 5
 do
+	sleep 2
 	echo $i
 	ps -ef | grep CPU_O3 | awk '{print $2}' | xargs kill -9
 done

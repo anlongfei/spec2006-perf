@@ -1,2 +1,3 @@
 -C /home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/450.soplex/run/run_base_ref_CPU_O3.0000
 -o pds-50.mps.out -e pds-50.mps.stderr ../run_base_ref_CPU_O3.0000/soplex_base.CPU_O3 -s1 -e -m45000 pds-50.mps
+-o ref.out -e ref.stderr ../run_base_ref_CPU_O3.0000/soplex_base.CPU_O3 -m3500 ref.mps

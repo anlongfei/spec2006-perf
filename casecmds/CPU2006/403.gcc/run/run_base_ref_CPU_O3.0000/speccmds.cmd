@@ -1,2 +1,10 @@
 -C /home/cpu/spec2006/CPU2006_Install/benchspec/CPU2006/403.gcc/run/run_base_ref_CPU_O3.0000
 -o 166.out -e 166.err ../run_base_ref_CPU_O3.0000/gcc_base.CPU_O3 166.i -o 166.s
+-o 200.out -e 200.err ../run_base_ref_CPU_O3.0000/gcc_base.CPU_O3 200.i -o 200.s
+-o c-typeck.out -e c-typeck.err ../run_base_ref_CPU_O3.0000/gcc_base.CPU_O3 c-typeck.i -o c-typeck.s
+-o cp-decl.out -e cp-decl.err ../run_base_ref_CPU_O3.0000/gcc_base.CPU_O3 cp-decl.i -o cp-decl.s
+-o expr.out -e expr.err ../run_base_ref_CPU_O3.0000/gcc_base.CPU_O3 expr.i -o expr.s
+-o expr2.out -e expr2.err ../run_base_ref_CPU_O3.0000/gcc_base.CPU_O3 expr2.i -o expr2.s
+-o g23.out -e g23.err ../run_base_ref_CPU_O3.0000/gcc_base.CPU_O3 g23.i -o g23.s
+-o s04.out -e s04.err ../run_base_ref_CPU_O3.0000/gcc_base.CPU_O3 s04.i -o s04.s
+-o scilab.out -e scilab.err ../run_base_ref_CPU_O3.0000/gcc_base.CPU_O3 scilab.i -o scilab.s
