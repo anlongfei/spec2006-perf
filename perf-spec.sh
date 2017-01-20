@@ -1,7 +1,7 @@
 #!/bin/bash
 user=cpu
 tune=ref
-platform=980
+platform=950
 
 
 
@@ -298,6 +298,7 @@ fi
 
 mkdir ${platform}
 cp CPU2006 ${platform} -rfv
+cd $curDir
 ./dealpmcdata.py
 
 

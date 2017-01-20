@@ -1,6 +1,6 @@
 #/bin/bash
 user=cpu
-platform=980
+platform=950
 tune=
 #tune="-i test"
 
@@ -46,8 +46,8 @@ FP="
 cd $specconfig
 source ../shrc
 
-#find ${specbench} -name exe -exec rm -rfv {} \;
-#find ${specbench} -name run -exec rm -rfv {} \;
+find ${specbench} -name exe -exec rm -rfv {} \;
+find ${specbench} -name run -exec rm -rfv {} \;
 
 runspec -c pmc-${platform}-O3.cfg  ${tune}  --action setup all
 
