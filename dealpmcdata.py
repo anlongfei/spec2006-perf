@@ -202,13 +202,13 @@ def init():
 	global ffp2
 	global output
 	print "init"
-	fint1 ="./950/CPU2006/int.0"
-	fint2 ="./950/CPU2006/int.42"
-	ffp1  ="./950/CPU2006/fp.0"
-	ffp2  ="./950/CPU2006/fp.42"
-	os.system('rm -rfv ./950/output')
-	os.mkdir("./950/output")
-	output="./950/output"
+	fint1 ="./980/CPU2006/int.0"
+	fint2 ="./980/CPU2006/int.42"
+	ffp1  ="./980/CPU2006/fp.0"
+	ffp2  ="./980/CPU2006/fp.42"
+	os.system('rm -rfv ./980/output')
+	os.mkdir("./980/output")
+	output="./980/output"
 
 	print "**** int ****"
 	#for i in range(len(list_int)):

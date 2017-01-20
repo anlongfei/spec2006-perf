@@ -1,7 +1,7 @@
 #!/bin/bash
 user=cpu
 tune=ref
-platform=950
+platform=980
 
 
 
