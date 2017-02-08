@@ -1,6 +1,6 @@
 #/bin/bash
 user=cpu
-platform=980
+platform=950
 tune=
 #tune="-i test"
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 user=cpu
 tune=ref
-platform=980
+platform=950
 
 
 
@@ -295,9 +295,9 @@ if [ -d ${platform} ];then
 	rm -rfv ${platform}
 fi
 
-
 mkdir ${platform}
-cp CPU2006 ${platform} -rfv
+mv CPU2006 ${platform} -rfv
+
 cd $curDir
 ./dealpmcdata.py
 
